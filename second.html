@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .gallery-item {
+      width: 200px;
+      margin: 10px;
+    }
+    .gallery-item img {
+      width: 100%;
+      cursor: pointer;
+    }
+    .image-viewer img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Image Gallery</h1>
+    <div class="gallery"></div>
+    <div class="image-viewer modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <img src="" alt="" id="image-viewer-image">
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-primary" id="zoom-in-button"><i class="fas fa-search-plus"></i> Zoom In</a>
+            <a href="#" class="btn btn-primary" id="zoom-out-button"><i class="fas fa-search-minus"></i> Zoom Out</a>
+            <a href="#" class="btn btn-primary" id="download-button"><i class="fas fa-download"></i> Download</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script>
+    // Fetch image information from filelist.json
+    fetch('images/filelist.json')
+      .then(response => response.json())
+      .then(data => {
+        const gallery = document.querySelector('.gallery');
+
+        // Create gallery items and append them to the gallery
+        data.forEach(image => {
+          const galleryItem = document.createElement('div');
+          galleryItem.classList.add('gallery-item');
+
+          const img = document.createElement('img');
+          img.src = `images/${image.filename}`;
+          img.alt = image.title;
+
+          // Add click event listener to open the image viewer
+          img.addEventListener('click', () => {
+            openImageViewer(image);
+          });
+
+          galleryItem.appendChild(img);
+          gallery.appendChild(galleryItem);
+        });
+      });
+
+    // Open the image viewer
+    function openImageViewer(image) {
+      const imageViewer = document.querySelector('.image-viewer');
+      const imageViewerImage = document.getElementById('image-viewer-image');
+      const zoomInButton = document.getElementById('zoom-in-button');
+      const zoomOutButton = document.getElementById('zoom-out-button');
+      const downloadButton = document.getElementById('download-button');
+
+      imageViewerImage.src = `images/${image.filename}`;
+      imageViewerImage.alt = image.title;
+
+      // Zoom in event listener
+      zoomInButton.addEventListener('click', () => {
+        imageViewerImage.style.maxWidth = '200%';
+      });
+
+      // Zoom out event listener
+      zoomOutButton.addEventListener('click', () => {
+        imageViewerImage.style.maxWidth = '100%';
+      });
+
+      // Download event listener
+      downloadButton.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.href = `images/${image.filename}`;
+        link.download = image.filename;
+        link.click();
+      });
+
+      // Show the image viewer
+      imageViewer.classList.add('show');
+      imageViewer.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

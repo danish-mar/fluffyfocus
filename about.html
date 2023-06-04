@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Fluffy Focus Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ff69b4;
+            font-family: Arial, sans-serif;
+            background-image: url(230217.jpg);
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .logo img{
+            height: 200px;
+        }
+        .brand{
+            align-items: center;
+            text-align: center;
+        }
+        .profile-pic{
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        .team{
+            align-items: center;
+            align-content: center;
+            text-align: center;
+        }
+        .rgb-glow {
+            /* color: transparent; */
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #00ff00, 0 0 30px #0000ff;
+            animation: rgb-glow-animation 2s linear infinite;
+        }
+
+        @keyframes rgb-glow-animation {
+            0% {
+                text-shadow: 0 0 20px #ff0000, 0 0 20px #00ff00, 0 0 30px #0000ff;
+            }
+            50% {
+                text-shadow: 0 0 20px #ff0000, 0 0 30px #00ff00, 0 0 40px #0000ff;
+            }
+            100% {
+                text-shadow: 0 0 10px #ff0000, 0 0 20px #00ff00, 0 0 30px #0000ff;
+            }
+        }
+        .dev_quote{
+    
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-style: italic;
+            padding: 10px;
+            font-weight: lighter;
+        }
+        .footer {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            /* Add your footer styles here */
+        }
+        .email-logo {
+            color: black;
+            font-size: 24px;
+        }
+        /* Scrollbar Styles */
+        ::-webkit-scrollbar{  
+  background-color: #ffffff;
+  border-radius: 50px;
+  width: 10px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #ff80c0;
+  border-radius: 50px;
+
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: #ff58ac;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container brand">
+        <div class="logo">
+            <a  href="index.html"><img src="logo.png" alt=""></a>
+        </div>
+        <h1 class="rgb-glow" >Fluffy Focus</h1>
+    </div>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Welcome to Fluffy Focus Portfolio, your one-stop destination for stunning and captivating images. We specialize in capturing the essence of beauty, creativity, and emotion through our photography. Our mission is to provide you with an unforgettable visual experience that leaves a lasting impression.</p>
+        <p>With our team of skilled photographers and state-of-the-art equipment, we ensure that each photograph tells a unique story. Whether it's a portrait, landscape, or special event, we strive to create images that evoke emotions and spark imagination.</p>
+        <p>At Fluffy Focus Portfolio, we believe that every moment is worth capturing. We are dedicated to preserving memories and showcasing the beauty of the world through our lenses. Join us on this artistic journey and let us help you bring your vision to life.</p>
+    </div>
+    <div class="container team">
+        <h1>Team</h1>
+        <div class="team_person">
+            <div class="profile">
+                <img src="me.jpg" class="profile-pic" alt="">
+            </div>
+        </div>
+        <h4>Keqing</h4>
+        
+        <p><b>Developer & Founder</b></p>
+        <div class="dev_quote">
+        <p><i>"Programming is not about what you can do, <br> its about what you can figure out"</i></p>
+    </div>
+    <div class="email">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+          </svg><i class="bi bi-envelope-fill"> danishs2007@gmail.com</i>
+    </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 Fluffy Focus. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
