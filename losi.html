@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles for dark theme with purple accent */
+        body {
+            background-color: #333;
+            color: #fff;
+        }
+        
+        
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 300px;
+        }
+        
+        .form-container .nav-tabs .nav-link {
+            color: #fff;
+        }
+        
+        .form-container .nav-tabs .nav-link.active {
+            background-color: #6c757d;
+        }
+        
+        body {
+    background-color: #333;
+    color: #fff;
+    margin: 0; /* Add this line to remove default margin */
+    overflow: hidden; /* Add this line to prevent scrollbars */
+}
+
+.slideshow-container {
+    position: fixed; /* Change position to fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Change height to 100% */
+    margin: 0;
+    padding: 0;
+    z-index: -1; /* Move slideshow to the background */
+    opacity: 0.3; /* Set the opacity value as per your preference */
+
+}
+.slideshow-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: none;
+    max-height: none;
+    opacity: 0.5; /* Set the opacity value as per your preference */
+    transition: opacity 1s ease;
+}
+
+.slideshow-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+        
+        .slideshow-container img.active {
+            opacity: 1;
+        }
+        .tac{
+            color: black;
+        }
+        .xinput input {
+    background-color: rgba(50, 51, 51, 0.8);
+    border: none;
+    border-bottom: 2px solid #6c757d;
+    border-radius: 0px;
+    padding: 10px;
+    color: white;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.xinput input:hover {
+    border-color: #c155ff;
+}
+
+.xinput input:focus {
+    border-color: #f4c6ff;
+    box-shadow: 0 0 5px #ae00ff;
+}
+.xbut{
+    background-color: #c155ff;
+    border-color: #c155ff;
+}
+.xbut:hover{
+    background-color: #e4b6ff;
+    border-color: #e8c1ff;
+}
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navx">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img class="logo" src="logo.png" alt=""><span class="neonlogo">Fluffy Focus</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item neon">
+            <i class="bi bi-person"></i><a href="losi.html" class="nav-link">Login | Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+<body>
+    <div class="container">
+        <div class="form-container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login-form">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="signup-tab" data-toggle="tab" href="#signup-form">Sign Up</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-3">
+                <div class="tab-pane fade show active" id="login-form">
+                    <form>
+                        <div class="form-group xinput">
+                            <label for="login-email">Email address</label>
+                            <input type="email" class="form-control" id="login-email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group xinput">
+                            <label for="login-password">Password</label>
+                            <input type="password" class="form-control" id="login-password" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary xbut">Login</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="signup-form">
+                    <form>
+                        <div class="form-group xinput">
+                            <label for="signup-username">Username</label>
+                            <input type="text" class="form-control" id="signup-username" placeholder="Enter username">
+                        </div>
+                        <div class="form-group xinput">
+                            <label for="signup-email">Email address</label>
+                            <input type="email" class="form-control" id="signup-email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group xinput">
+                            <label for="signup-password">Password</label>
+                            <input type="password" class="form-control" id="signup-password" placeholder="Password">
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="terms-checkbox">
+                            <label class="form-check-label" for="terms-checkbox">I agree to the terms and conditions</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary xbut">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slideshow-container">
+        <img class="active" src="images/61.jpeg" alt="Slide 1">
+        <img src="images/46.jpeg" alt="Slide 2">
+        <img src="images/71.jpeg" alt="Slide 3">
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div id="terms-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title tac">Terms and Conditions</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add your terms and conditions content here -->
+                    <p class="tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec,
+                        mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed
+                        eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris
+                        sit amet elit iaculis pretium sit amet quis magna.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Slideshow background
+        const images = document.querySelectorAll('.slideshow-container img');
+        let currentImgIndex = 0;
+        setInterval(() => {
+            images.forEach((img, index) => {
+                if (index === currentImgIndex) {
+                    img.classList.add('active');
+                } else {
+                    img.classList.remove('active');
+                }
+            });
+            currentImgIndex = (currentImgIndex + 1) % images.length;
+        }, 3000);
+
+        // Show terms and conditions modal
+        const termsCheckbox = document.getElementById('terms-checkbox');
+        const termsModal = new bootstrap.Modal(document.getElementById('terms-modal'));
+        termsCheckbox.addEventListener('click', () => {
+            if (termsCheckbox.checked) {
+                termsModal.show();
+            }
+        });
+    </script>
+</body>
+
+</html>

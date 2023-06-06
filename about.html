@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Fluffy Focus Portfolio</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
         body {
             background-color: #000000;
@@ -98,6 +100,28 @@
 ::-webkit-scrollbar-thumb:hover{
   background-color: #ff58ac;
 }
+.social-links {
+  text-align: center;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #53006d;
+  color: #fff;
+  margin: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-link:hover {
+  transform: scale(1.2);
+  text-decoration: none;
+  color: white;
+}
 
 
     </style>
@@ -123,17 +147,27 @@
                 <img src="me.jpg" class="profile-pic" alt="">
             </div>
         </div>
-        <h4>Keqing</h4>
+        <h4 id="contact">Keqing</h4>
         
         <p><b>Developer & Founder</b></p>
         <div class="dev_quote">
         <p><i>"Programming is not about what you can do, <br> its about what you can figure out"</i></p>
     </div>
-    <div class="email">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-          </svg><i class="bi bi-envelope-fill"> danishs2007@gmail.com</i>
-    </div>
+    <div class="social-links">
+        <a href="https://github.com/danish-mar" target="_blank" class="social-link">
+            <i class="fa fa-github" style="font-size: 50px;"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100017394582809"target="_blank"  class="social-link">
+            <i class="fa fa-facebook-f" style="font-size: 50px;"></i>
+        </a>
+        <a href="https://www.instagram.com/gamerz_dennis/" target="_blank" class="social-link">
+            <i class="fa fa-instagram" style="font-size: 50px;"></i>
+        </a>
+      </div>
+      
+
+
+      
     </div>
     <footer class="footer">
         <p>&copy; 2023 Fluffy Focus. All rights reserved.</p>
