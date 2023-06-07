@@ -341,8 +341,8 @@
           <li class="nav-item">
             <a class="nav-link" href="about.html">About</a>
           </li>
-            <li class="nav-item">
-            <a href="losi.html" class="nav-link">Login | Sign Up</a>
+          <li class="nav-item">
+            <a href="losi.html" class="nav-link" id="usernav">Login | Sign Up</a>
           </li>
         </ul>
       </div>
@@ -521,7 +521,15 @@ myBtn.addEventListener('click', () => {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
-
+        <script>
+      if (localStorage.getItem('username')){
+        var username = localStorage.getItem('username');
+        var statusr = document.getElementById('usernav');
+        statusr.innerHTML = ("Profile")
+        statusr.href = "profile.html"
+        welcome_msg.innerHTML = "We are thrilled to have you back on our portfolio"
+      }
+    </script>
   </body>
   
   </html>

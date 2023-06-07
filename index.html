@@ -220,7 +220,7 @@
             <a class="nav-link" href="about.html">About</a>
           </li>
           <li class="nav-item">
-            <a href="losi.html" class="nav-link">Login | Sign Up</a>
+            <a href="losi.html" class="nav-link" id="user">Login | Sign Up</a>
           </li>
         </ul>
       </div>
@@ -229,9 +229,9 @@
 
   <div class="jumbotron jumbotron-fluid heading">
     <div class="container">
-      <h1 class="display-4 animated fadeIn">Welcome to Fluffy Focus</h1>
+      <h1 class="display-4 animated fadeIn "  id="welcome">Welcome to Fluffy Focus</h1>
 
-      <p class="lead">One Stop for adorable and fluffy anime images</p>
+      <p class="lead" id="message" >One Stop for adorable and fluffy anime images</p>
     </div>
   </div>
   <div class="container text-center xtitle">
@@ -323,6 +323,18 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script>
+        if (localStorage.getItem('username')){
+          var username = localStorage.getItem('username');
+          var welcome = document.getElementById('welcome');
+          var statusr = document.getElementById('user');
+          var welcome_msg = document.getElementById('message');
+          welcome.innerHTML = ("Welcome Back " + username);
+          statusr.innerHTML = ("Profile")
+          statusr.href = "profile.html"
+          welcome_msg.innerHTML = "We are thrilled to have you back on our portfolio"
+        }
+      </script>
   </body>
   
   </html>
