@@ -108,6 +108,33 @@
     border-color: #e8c1ff;
 }
 
+.image-container.active {
+    opacity: 1;
+}
+
+.desktop-image {
+    display: block;
+    width: 100%; /* Fill the available width without gaps */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.mobile-image {
+    display: none;
+    width: 100%; /* Fill the available width without gaps */
+    height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+    .desktop-image {
+        display: none;
+    }
+
+    .mobile-image {
+        display: block;
+    }
+}
+
+
     </style>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -189,10 +216,20 @@
     </div>
 
     <div class="slideshow-container">
-        <img class="active" src="images/61.jpeg" alt="Slide 1">
-        <img src="images/46.jpeg" alt="Slide 2">
-        <img src="images/71.jpeg" alt="Slide 3">
+        <div class="image-container">
+            <img src="login_slide/46_wide.jpeg" alt="Image 1" class="desktop-image active">
+            <img src="login_slide/46_mobile.jpeg" alt="Mobile Image 1" class="mobile-image">
+        </div>
+        <div class="image-container">
+            <img src="login_slide/61_wide.jpeg" alt="Image 2" class="desktop-image">
+            <img src="login_slide/61_mobile.jpeg" alt="Mobile Image 2" class="mobile-image">
+        </div>
+        <div class="image-container">
+            <img src="login_slide/71_wide.jpeg" alt="Image 3" class="desktop-image">
+            <img src="login_slide/71_mobile.jpeg" alt="Mobile Image 3" class="mobile-image">
+        </div>
     </div>
+    
 
     <!-- Terms and Conditions Modal -->
     <div id="terms-modal" class="modal" tabindex="-1">
@@ -206,10 +243,21 @@
                 </div>
                 <div class="modal-body">
                     <!-- Add your terms and conditions content here -->
-                    <p class="tac">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec,
-                        mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed
-                        eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris
-                        sit amet elit iaculis pretium sit amet quis magna.</p>
+                    <p class="tac">
+                        Eligibility: <br>
+
+Users must be at least 13 years old to create an account on Fluffy Focus Anime Portfolio website.
+By creating an account, users affirm that they meet the age requirement and agree to abide by these terms and conditions.<br>
+Account Registration:<br>
+
+Users must provide accurate and complete information during the registration process.
+Users are responsible for maintaining the confidentiality of their account credentials (username and password) and are solely accountable for any activities conducted using their account.
+User Content: <br>
+
+Users are solely responsible for the content they upload or share on the Fluffy Focus Anime Portfolio website.
+Users must ensure that their content does not violate any intellectual property rights, privacy rights, or any applicable laws.
+Fluffy Focus Anime Portfolio reserves the right to remove or take down any content that is deemed inappropriate, offensive, or violates these terms and conditions.
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -234,7 +282,7 @@
                 }
             });
             currentImgIndex = (currentImgIndex + 1) % images.length;
-        }, 3000);
+        }, 2000);
 
         // Show terms and conditions modal
         const termsCheckbox = document.getElementById('terms-checkbox');
