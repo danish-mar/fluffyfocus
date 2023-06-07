@@ -8,6 +8,7 @@
     <title>Login/Signup - Fluffyfocus</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <style>
         /* Custom styles for dark theme with purple accent */
         body {
@@ -29,7 +30,12 @@
         .form-container .nav-tabs .nav-link.active {
             background-color: #6c757d;
         }
-        
+        .error{
+            color: red;
+        }
+        .status{
+            color: greenyellow;
+        }
         body {
     background-color: #333;
     color: #fff;
@@ -179,29 +185,33 @@
             <div class="tab-content mt-3">
                 <div class="tab-pane fade show active" id="login-form">
                     <form>
+                        <p class="error" id="error-msg"></p>
+                        <p class="status" id="status"></p>
                         <div class="form-group xinput">
-                            <label for="login-email">Email address</label>
-                            <input type="email" class="form-control" id="login-email" placeholder="Enter email">
+                            <label for="login-email">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Username">
                         </div>
                         <div class="form-group xinput">
                             <label for="login-password">Password</label>
-                            <input type="password" class="form-control" id="login-password" placeholder="Password">
+                            <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-primary xbut">Login</button>
+                        <button type="submit" id="login" class="btn btn-primary xbut">Login</button>
                     </form>
                 </div>
                 <div class="tab-pane fade" id="signup-form">
                     <form>
                         <div class="form-group xinput">
-                            <label for="signup-username">Username</label>
+                            <p class="error" id="create_error-msg"></p>
+                            <p class="status" id="create_status"></p>
+                            <label for="username">Username</label>
                             <input type="text" class="form-control" id="signup-username" placeholder="Enter username">
                         </div>
                         <div class="form-group xinput">
-                            <label for="signup-email">Email address</label>
+                            <label for="email">Email address</label>
                             <input type="email" class="form-control" id="signup-email" placeholder="Enter email">
                         </div>
                         <div class="form-group xinput">
-                            <label for="signup-password">Password</label>
+                            <label for="password">Password</label>
                             <input type="password" class="form-control" id="signup-password" placeholder="Password">
                         </div>
                         <div class="form-group form-check">
@@ -266,9 +276,10 @@ Fluffy Focus Anime Portfolio reserves the right to remove or take down any conte
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="endpoint.js"></script>
     <script>
         // Slideshow background
         const images = document.querySelectorAll('.slideshow-container img');
@@ -293,6 +304,7 @@ Fluffy Focus Anime Portfolio reserves the right to remove or take down any conte
             }
         });
     </script>
+ 
 </body>
 
 </html>
