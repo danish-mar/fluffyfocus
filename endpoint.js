@@ -47,7 +47,7 @@ $(document).ready(function() {
 
         // Send a POST request to the server
         $.ajax({
-            url: "http://13.233.199.32:9481/",
+            url: "https://fluffyfocus.kawaiiteam.com:9481/",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(data),
@@ -71,7 +71,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     var xhr = new XMLHttpRequest();
     
     // Define the request URL
-    var url = 'http://13.233.199.32:9481';
+    var url = 'https://fluffyfocus.kawaiiteam.com:9481';
   
     // Set the request method to POST
     xhr.open('POST', url);
