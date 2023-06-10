@@ -23,6 +23,16 @@
             margin-top: 300px;
         }
         
+        @media (max-width: 600px) {
+    .form-container {
+        margin-top: 200px;
+    }
+}
+@media (max-width: 200px){
+    .form-container{
+        margin-top: 100px;
+    }
+}
         .form-container .nav-tabs .nav-link {
             color: #fff;
         }
@@ -68,6 +78,31 @@
     opacity: 0.5; /* Set the opacity value as per your preference */
     transition: opacity 1s ease;
 }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;
+  backdrop-filter: blur(5px);
+}
+
+.terms-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  z-index: 10000;
+  display: none;
+}
 
 .slideshow-container img {
     position: absolute;
@@ -75,7 +110,6 @@
     left: 0;
     width: auto;
     height: auto;
-
     opacity: 0;
     transition: opacity 1s ease;
 }
@@ -113,6 +147,10 @@
     background-color: #e4b6ff;
     border-color: #e8c1ff;
 }
+.xbut:disabled{
+    background-color: #ab8cbc;
+    border-color: #ab8cbc;
+}
 
 .image-container.active {
     opacity: 1;
@@ -138,6 +176,48 @@
     .mobile-image {
         display: block;
     }
+}
+.modal.fade .modal-dialog {
+    transform: translateY(-100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.modal.fade.show .modal-dialog {
+    transform: translateY(0);
+}
+.modal-content {
+    background-color: #333;
+    color: #fff;
+    border-radius: 0;
+}
+
+.modal-header {
+    background-color: #001c34;
+    color: #fff;
+    border-bottom: none;
+}
+
+.modal-title {
+    color: #e91e63;
+}
+
+.modal-footer {
+    background-color: #001c34;
+    border-top: none;
+}
+
+.btn-secondary {
+    background-color: #c155ff;
+    border-color: #c155ff;
+}
+
+.btn-secondary:hover {
+    background-color: #e4b6ff;
+    border-color: #e4b6ff;
+}
+
+.tac {
+    color: #ffffff;
 }
 
 
@@ -214,11 +294,12 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="signup-password" placeholder="Password">
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="terms-checkbox">
-                            <label class="form-check-label" for="terms-checkbox">I agree to the terms and conditions</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary xbut">Sign Up</button>
+<div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="terms-checkbox">
+    <label class="form-check-label" for="terms-checkbox">I agree to the terms and conditions</label>
+    <div class="checkbox-slide"></div>
+</div>
+<button type="submit" class="btn btn-primary xbut" id="signup-button" disabled>Sign Up</button>
                     </form>
                 </div>
             </div>
@@ -242,7 +323,7 @@
     
 
     <!-- Terms and Conditions Modal -->
-    <div id="terms-modal" class="modal" tabindex="-1">
+    <div id="terms-modal" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -297,12 +378,22 @@ Fluffy Focus Anime Portfolio reserves the right to remove or take down any conte
 
         // Show terms and conditions modal
         const termsCheckbox = document.getElementById('terms-checkbox');
+        const signupButton = document.getElementById('signup-button');
         const termsModal = new bootstrap.Modal(document.getElementById('terms-modal'));
         termsCheckbox.addEventListener('click', () => {
             if (termsCheckbox.checked) {
-                termsModal.show();
+                signupButton.removeAttribute('disabled');
+            } else {
+                signupButton.setAttribute('disabled', 'disabled');
             }
         });
+        termsCheckbox.addEventListener('click', () => {
+            if (termsCheckbox.checked) {
+                termsModal.show();
+                
+            }
+        });
+        
     </script>
  
 </body>
