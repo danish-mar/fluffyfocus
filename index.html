@@ -28,6 +28,29 @@
       background-color: #343a40;
       color: #fff;
     }
+    body {
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+      color: #fff;
+    }
+    .morning {
+    background-image: url(bgs/morning.jpg);
+}
+
+.afternoon {
+    background-image: url(bgs/afternoon.png);
+}
+
+.evening {
+    background-image: url(bgs/evening.jpg);
+}
+
+.night {
+    background-image: url(bgs/nighttheme.jpg);
+}
+
 
     .navbar {
       background-color: #000000 !important;
@@ -324,16 +347,64 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script>
-        if (localStorage.getItem('username')){
-          var username = localStorage.getItem('username');
-          var welcome = document.getElementById('welcome');
-          var statusr = document.getElementById('user');
-          var welcome_msg = document.getElementById('message');
-          welcome.innerHTML = ("Welcome Back " + username);
-          statusr.innerHTML = ("Profile")
-          statusr.href = "profile.html"
-          welcome_msg.innerHTML = "We are thrilled to have you back on our portfolio"
-        }
+        function displayRandomGreeterMessage() {
+  const greetMessages = [
+    "🌼 We're delighted to have you back on our portfolio!",
+    "🌈 It's absolutely pawsome to have you back on our portfolio!",
+    "Hey, sunshine! ☀️ We're over the moon to see your smiling face again!",
+    "Greetings, lovely human! 🌸 Your presence makes our hearts flutter with joy!",
+    "Hooray! 🎉 You're back! Our virtual hug awaits to brighten your day!",
+    "⚓️ It's like finding a treasure chest when you return to our portfolio!",
+    "Hiya, superstar! ⭐️ We've missed your sparkly presence. Welcome back!",
+    "Aloha, dear friend! 🌺 Get ready for a wave of cuteness and joy on our portfolio!",
+    "Yippee! 🎈 You're here! We're bouncing with excitement to show you what's new!"
+  ];
+
+  // Generate a random index
+  const randomIndex = Math.floor(Math.random() * greetMessages.length);
+
+  // Get the message element by its id
+  const messageElement = document.getElementById("message");
+
+  // Set the random greeter message
+  messageElement.innerHTML = greetMessages[randomIndex];
+}
+var currentHour = new Date().getHours();
+var greeting;
+if (currentHour >= 6 && currentHour < 12) {
+    greeting = "Good morning";
+} else if (currentHour >= 12 && currentHour < 18) {
+    greeting = "Good afternoon";
+} else if (currentHour >= 18 && currentHour < 24) {
+    greeting = "Good evening";
+} else {
+    greeting = "Good night";
+}
+
+var currentHour = new Date().getHours();
+var backgroundElement = document.querySelector('body');
+if (currentHour >= 6 && currentHour < 12) {
+    backgroundElement.classList.add('morning');
+} else if (currentHour >= 12 && currentHour < 18) {
+    backgroundElement.classList.add('afternoon');
+} else if (currentHour >= 18 && currentHour < 24) {
+    backgroundElement.classList.add('evening');
+} else {
+    backgroundElement.classList.add('night');
+}
+
+if (localStorage.getItem('username')) {
+    var username = localStorage.getItem('username');
+    var welcome = document.getElementById('welcome');
+    var statusr = document.getElementById('user');
+    var welcome_msg = document.getElementById('message');
+    welcome.innerHTML = `${greeting}, ${username}!`;
+    statusr.innerHTML = "Profile";
+    statusr.href = "profile.html";
+    displayRandomGreeterMessage();
+}
+
+
       </script>
   </body>
   
