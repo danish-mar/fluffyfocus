@@ -3,6 +3,7 @@
 <head>
     <title>User Profile - Cute Anime</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -152,9 +153,35 @@
                 transform: translateY(0);
             }
         }
+        .overlay.fade-out {
+        animation: fade-out 0.5s ease;
+    }
+
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
     </style>
 </head>
 <body>
+    <div class="overlay" id="overlay-delete">
+        <div class="alert-box">
+            <h1>Delete Account</h1>
+            <p>Please enter your password to confirm account deletion:</p>
+            <form id="delete-form">
+                <input type="password" id="password-input" class="form-control" placeholder="Password">
+                <p class="error" id="delete-error-msg"></p>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary xbtn" type="button" onclick="confirmDelete()">Confirm Delete</button>
+                    <button class="btn btn-primary xbtn" type="button" onclick="cancelDelete()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="overlay" id="overlay">
         <div class="alert-box">
             <h1>Logged Out</h1>
@@ -192,10 +219,29 @@
         function deleteProfile() {
             var confirmDelete = confirm("Are you sure you want to delete your profile?");
             if (confirmDelete) {
-                alert("Profile Deleted");
-                // Add your profile deletion logic here
+                
             }
         }
     </script>
+    <script>
+        function cancelDelete() {
+        var overlay = document.getElementById('overlay-delete');
+        overlay.classList.add('fade-out');
+        setTimeout(function() {
+            overlay.style.display = 'none';
+            overlay.classList.remove('fade-out');
+        }, 500);
+    }
+    
+        function showLoggedOutDialog() {
+            document.getElementById('overlay').style.display = 'flex';
+            localStorage.removeItem('username');
+            setTimeout(function() {
+                window.location.href = "index.html";
+            }, 2000);
+        }
+    </script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="endpoint.js"></script>
 </body>
 </html>
