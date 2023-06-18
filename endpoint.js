@@ -5,6 +5,10 @@ function clearContentById(id) {
   }
 }
 
+function refreshPage() {
+  location.reload();
+}
+
 
 var serverURL;
 
@@ -78,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(result => {
         showMessage(result);
         fileInput.value = '';
+        refreshPage();
       })
       .catch(error => {
         console.error(error);
