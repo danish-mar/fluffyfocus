@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const formData = new FormData();
     formData.append('file', file, fileName);
 
-    fetch('http://localhost:5598/upload', {
+    fetch(`${serverURL}/upload`, {
       method: 'POST',
       body: formData
     })
