@@ -48,7 +48,49 @@ function setCookie(name, value, hours) {
     return "";
   }
 //  setCookie("username", "John Doe", 2);  // Set a cookie named "username" with the value "John Doe" that expires in 2 hours
-  
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('upload-form');
+  const fileInput = document.getElementById('file-input');
+  const message = document.getElementById('message');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const file = fileInput.files[0];
+
+    if (!file) {
+      showMessage('No file selected');
+      return;
+    }
+
+    const username = localStorage.getItem('username');
+    const fileExtension = file.name.split('.').pop();
+    const fileName = `${username}.${fileExtension}`;
+
+    const formData = new FormData();
+    formData.append('file', file, fileName);
+
+    fetch('http://localhost:5598/upload', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.text())
+      .then(result => {
+        showMessage(result);
+        fileInput.value = '';
+      })
+      .catch(error => {
+        console.error(error);
+        showMessage('Error uploading file');
+      });
+  });
+
+  function showMessage(text) {
+    message.textContent = text;
+  }
+});
+
+
 $(document).ready(function() {
     $("#signup-form").submit(function(event) {
         event.preventDefault();

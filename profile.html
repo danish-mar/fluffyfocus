@@ -167,6 +167,55 @@
         }
     }
     </style>
+    <style>
+                /* Add the CSS styles for the hover effect */
+                .profile-image {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .edit-overlay {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        .edit-text {
+            color: #fff;
+            font-size: 16px;
+        }
+        .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+        .profile-image:hover .edit-overlay {
+            opacity: 1;
+        }
+        .profile-upload-overlay {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
     <div class="overlay" id="overlay-delete">
@@ -192,7 +241,14 @@
         </div>
     </div>
     <div class="container main_box">
-        <img src="pfp.jpg" alt="User Profile Image">
+        <div class="profile-container" id="profile-container">
+            <div class="profile-image profile-picture" id="profile-picture">
+                <!-- Add the rectangular button overlay for hover effect -->
+                <div class="edit-overlay" onclick="openUploadDialog()" id="edit-overlay">
+                    <span class="edit-text" >Edit</span>
+                </div>
+            </div>
+        </div>
         <h1>User Profile</h1>
         <p><span class="accent">Username:</span> <span id="username">loading...</span></p>
         <p><span class="accent" id="email">Email:</span> loading...</p>
@@ -201,13 +257,35 @@
             <button class="btn btn-primary xbtn" type="button"><a href="index.html">Home</a></button>
             <button class="btn btn-danger" type="button" onclick="deleteProfile()">Delete Profile</button>
         </div>
+        <div class="overlay" id="profile-upload-overlay">
+            <div class="alert-box">
+                <h1>Upload Profile Picture</h1>
+                <p id="message"></p>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <input type="file" id="file-input" class="form-control" accept=".jpg" required>
+                    <p class="error" id="profile-upload-error-msg"></p>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary xbtn" type="submit">Upload</button>
+                        <button class="btn btn-primary xbtn" type="button" onclick="cancelProfileUpload()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script>
         if (localStorage.getItem('username')) {
             var username = localStorage.getItem('username');
             document.getElementById('username').innerHTML = username;
+            displayProfilePicture(username); 
+        }else{
+            var profilePicture = document.getElementById('profile-picture');
+            var img = document.createElement('img');
+            img.src = `pfp.jpeg`; // Set the image source dynamically
+            img.alt = 'User Profile Image';
+            profilePicture.appendChild(img);
         }
+
 
         function logout() {
             document.getElementById('overlay').style.display = 'flex';
@@ -217,12 +295,53 @@
             }, 2000);
         }
 
+        function displayProfilePicture(username,) {
+  var profilePicture = document.getElementById('profile-picture');
+  var img = document.createElement('img');
+  
+  // Check if the image file exists on the server
+  var imageSrc = `srv_profile/${username}.jpeg`;
+  
+  var xhr = new XMLHttpRequest();
+  xhr.open('HEAD', imageSrc, true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Image file exists
+        img.src = imageSrc;
+      } else {
+        // Image file does not exist, set default image source
+        img.src = 'srv_profile/default.jpg';
+      }
+      img.alt = 'User Profile Image';
+      profilePicture.appendChild(img);
+    }
+  };
+  xhr.send();
+}
+
+
         function deleteProfile() {
             var confirmDelete = confirm("Are you sure you want to delete your profile?");
             if (confirmDelete) {
                 
             }
         }
+        function openUploadDialog() {
+
+            document.getElementById('profile-upload-overlay').style.display = 'flex';
+        }
+
+        function cancelProfileUpload() {
+    var overlay = document.getElementById('profile-upload-overlay');
+    overlay.classList.add('fade-out');
+    setTimeout(function() {
+        overlay.style.display = 'none';
+        overlay.classList.remove('fade-out');
+        document.getElementById('profile-upload-form').reset();
+    }, 500);
+}
+
     </script>
     <script>
         function cancelDelete() {
