@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+body {
+  background-image: url("bgs/_90d4df38-7432-44b1-8e27-91feb77f0f0d.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-container {
+  text-align: center;
+}
+
+.error-container h1 {
+  font-size: 8rem;
+  margin-bottom: 10px;
+  color: #590064;
+  animation: bounce 1s ease infinite;
+}
+
+.error-container h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.error-container p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.btn-pink {
+  background-color: #590064;
+  color: #fff;
+  border: none;
+  padding: 10px 30px;
+  font-size: 1rem;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-pink:hover {
+  background-color: #ff1493;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="error-container">
+          <h1>404</h1>
+          <h3>Oops! Page Not Found</h3>
+          <p>The page you are looking for does not exist.</p>
+          <a href="/" class="btn btn-pink">Go Back Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
