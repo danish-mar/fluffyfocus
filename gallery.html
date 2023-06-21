@@ -8,8 +8,82 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
   <style>
+       .pagination-container {
+        padding-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .pagination-button {
+      background-color: #8a4baf;
+      color: #ffffff;
+      border: none;
+      font-size: 18px;
+      padding: 10px 15px;
+      margin: 0 5px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .pagination-button:hover {
+      background-color: #ff4da6;
+      transform: scale(1.1);
+    }
+
+    #pagination-numbers {
+      display: flex;
+      align-items: center;
+    }
+
+    .pagination-number {
+      background-color: #8a4baf;
+      color: #ffffff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .morning {
+    background-image: url(bgs/morning.jpg);
+}
+
+.afternoon {
+    background-image: url(bgs/afternoon.png);
+}
+
+.evening {
+    background-image: url(bgs/evening.jpg);
+}
+
+.night {
+    background-image: url(bgs/nighttheme.jpg);
+}
+
+
+    .pagination-number.active {
+      background-color: #ff4da6;
+    }
+
+    .pagination-number:hover {
+      background-color: #ff4da6;
+      transform: scale(1.1);
+    }
     body {
+        background-image: url(bg/wallp.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
       background-color: #000000;
       color: #fff;
     }
@@ -137,49 +211,53 @@
     }
 
     .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 50px;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
 
-    .gallery-item {
-      width: 500px;
-      height: 500px;
-      border-radius: 20%;
-      position: relative;
-      overflow: hidden;
-      margin: 20px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
+.gallery-item {
+  width: 500px;
+  height: 500px;
+  border-radius: 20%;
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center; /* Added */
+  justify-content: center; /* Added */
+}
 
-    .gallery-item:hover {
-      transform: scale(1.1);
-    }
+.gallery-item:hover {
+  transform: scale(1.1);
+}
 
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.gallery-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
 
-    .gallery-item .caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      padding: 10px;
-      font-size: 14px;
-      text-align: center;
-      transition: opacity 0.3s;
-    }
+.gallery-item .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  transition: opacity 0.3s;
+}
 
-    .gallery-item:hover .caption {
-      opacity: 0;
-    }
+.gallery-item:hover .caption {
+  opacity: 0;
+}
+
     /* Scrollbar Styles */
     ::-webkit-scrollbar{  
   background-color: #ffffff;
@@ -372,7 +450,7 @@
 
   <div class="container">
     <div class="container heading09">
-      <div class="bs5-center">
+      <div class="bs5-center helloms">
         <h1>Explore Our Fluffy Portfolio</h1>
       </div>
     </div>
@@ -381,7 +459,21 @@
     </div>
   </div>
 
-  <script>
+
+    <nav class="pagination-container">
+        <button class="pagination-button" id="prev-button" title="Previous page" aria-label="Previous page">
+          &lt;
+        </button>
+        
+        <div id="pagination-numbers">
+        </div>
+        
+        <button class="pagination-button" id="next-button" title="Next page" aria-label="Next page">
+          &gt;
+        </button>
+      </nav>
+
+      <script>
             function showLoader() {
   document.getElementById("loader").style.display = "block";
 }
@@ -426,86 +518,162 @@ function hideLoader() {
 }
 scrollToTop();
 disableScroll();
+function expandImage(image) {
+  var expandedImageContainer = document.getElementById('expandedImageContainer');
+  var expandedImage = document.getElementById('expandedImage');
+  expandedImage.src = image.src;
+  expandedImageContainer.style.display = 'flex';
+  disableScroll();
+}
+
+function closeExpandedImage() {
+  var expandedImageContainer = document.getElementById('expandedImageContainer');
+  expandedImageContainer.style.display = 'none';
+  enableScroll();
+}
 showLoader();
 setTimeout(hideLoader, 5000);
-simulateClick("loader");
-    const gl = document.querySelector(".gallery");
-    document.addEventListener("DOMContentLoaded", function () {
-      const galleryContainer = document.querySelector(".gallery");
-
-      // Replace with your actual image folder path
-      const imagePath = "images/";
-
-      // Fetch the list of JPEG files
+      const galleryContainer = document.querySelector('.gallery');
+      const nextButton = document.getElementById('next-button');
+      const prevButton = document.getElementById('prev-button');
+      const paginationNumbers = document.getElementById('pagination-numbers');
+  
+      const imagePath = 'images/'; // Replace with your actual image folder path
+      const paginationLimit = 40; // Number of images per page
+  
       fetch(`${imagePath}filelist.json`)
         .then(response => response.json())
         .then(data => {
-          // Iterate through the file list and create gallery items
-          data.forEach(file => {
-            const fileName = file.replace(".jpg", "");
-            const imgSrc = `${imagePath}${file}`;
-
-            const galleryItem = document.createElement("div");
-            galleryItem.classList.add("gallery-item");
-
-            const img = document.createElement("img");
-            img.src = imgSrc;
-            galleryItem.appendChild(img);
-
-            const caption = document.createElement("div");
-            caption.classList.add("caption");
-            caption.innerText = fileName;
-            galleryItem.appendChild(caption);
-
-            galleryContainer.appendChild(galleryItem);
-
-            // Open the image in a new window on click
-            // galleryItem.addEventListener("click", () => {
-            //   window.open(imgSrc, "_blank");
-            // });
-            galleryItem.addEventListener("click", function () {
-  expandImage(this.getElementsByTagName('img')[0]);
+          const pageCount = Math.ceil(data.length / paginationLimit);
+          let currentPage = 1;
+  
+          const displayImages = () => {
+            galleryContainer.innerHTML = '';
+  
+            const startIndex = (currentPage - 1) * paginationLimit;
+            const endIndex = currentPage * paginationLimit;
+  
+            for (let i = startIndex; i < endIndex && i < data.length; i++) {
+              const fileName = data[i].replace('.jpeg', '');
+              const imgSrc = `${imagePath}${data[i]}`;
+  
+              const galleryItem = document.createElement('li');
+              galleryItem.classList.add('gallery-item');
+                  galleryItem.onclick = function() {
+      expandImage(img);
+    };
+  
+              const img = document.createElement('img');
+              img.src = imgSrc;
+              galleryItem.appendChild(img);
+  
+              const caption = document.createElement('div');
+              caption.classList.add('caption');
+              caption.innerText = fileName;
+              galleryItem.appendChild(caption);
+  
+              galleryContainer.appendChild(galleryItem);
+            }
+          };
+  
+          const createPaginationNumbers = () => {
+            paginationNumbers.innerHTML = '';
+  
+            for (let i = 1; i <= pageCount; i++) {
+              const pageNumber = document.createElement('button');
+              pageNumber.className = 'pagination-number';
+              pageNumber.innerHTML = i;
+              pageNumber.setAttribute('page-index', i);
+              pageNumber.setAttribute('aria-label', 'Page ' + i);
+              paginationNumbers.appendChild(pageNumber);
+            }
+          };
+  
+          const updatePage = () => {
+            displayImages();
+  
+            document.querySelectorAll('.pagination-number').forEach(button => {
+              const pageIndex = Number(button.getAttribute('page-index'));
+              if (pageIndex === currentPage) {
+                button.classList.add('active');
+              } else {
+                button.classList.remove('active');
+              }
+            });
+  
+            if (currentPage === 1) {
+              prevButton.disabled = true;
+            } else {
+              prevButton.disabled = false;
+            }
+  
+            if (currentPage === pageCount) {
+              nextButton.disabled = true;
+            } else {
+              nextButton.disabled = false;
+            }
+          };
+  
+          const setPage = page => {
+            currentPage = page;
+            updatePage();
+          };
+  
+          nextButton.addEventListener('click', () => {
+  if (currentPage < pageCount) {
+    currentPage++;
+    updatePage();
+    scrollToTop();
+    showLoader();
+    setTimeout(() => {
+      hideLoader();
+    }, 2000); // Adjust the delay in milliseconds (e.g., 2000 for 2 seconds)
+  }
 });
-const myBtn = document.querySelector('#expandedImageContainer');
-const myDiv = document.querySelector('#expandedImage');
 
-myBtn.addEventListener('click', () => {
-  myDiv.classList.add('fadeOut');
+prevButton.addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    updatePage();
+    scrollToTop();
+    showLoader();
+    setTimeout(() => {
+      hideLoader();
+    }, 2000); // Adjust the delay in milliseconds (e.g., 2000 for 2 seconds)
+  }
 });
 
+paginationNumbers.addEventListener('click', event => {
+  const pageIndex = Number(event.target.getAttribute('page-index'));
+  if (pageIndex) {
+    setPage(pageIndex);
+    scrollToTop();
+    showLoader();
+    setTimeout(() => {
+      hideLoader();
+    }, 2000); // Adjust the delay in milliseconds (e.g., 2000 for 2 seconds)
+  }
+});
 
-
-
-
-          });
+  
+          createPaginationNumbers();
+          updatePage();
         })
         .catch(error => {
-          console.error("Error fetching image list:", error);
+          console.error('Error fetching image list:', error);
         });
-    });
-  function expandImage(image) {
-    var expandedImageContainer = document.getElementById('expandedImageContainer');
-    var expandedImage = document.getElementById('expandedImage');
-    expandedImage.src = image.src;
-    expandedImageContainer.style.display = 'flex';
-    disableScroll();
-  }
-
-  function closeExpandedImage() {
-    var expandedImageContainer = document.getElementById('expandedImageContainer');
-    expandedImageContainer.animate = '.fade-out 0.5s ease forwards';
-    expandedImageContainer.style.display = 'none';
-    enableScroll();
-    fadeout();
-  }
-
-
-  var scroll = new SmoothScroll('a[href*="#"]');
-  // Optional JavaScript code if you want to control the loader dynamically
-// For example, you can show or hide the loader using JavaScript
-
-
-  </script> 
+        var currentHour = new Date().getHours();
+var backgroundElement = document.querySelector('body');
+if (currentHour >= 6 && currentHour < 12) {
+    backgroundElement.classList.add('morning');
+} else if (currentHour >= 12 && currentHour < 18) {
+    backgroundElement.classList.add('afternoon');
+} else if (currentHour >= 18 && currentHour < 24) {
+    backgroundElement.classList.add('evening');
+} else {
+    backgroundElement.classList.add('night');
+}
+    </script>
   
 
     <footer class="footer">
@@ -549,6 +717,7 @@ myBtn.addEventListener('click', () => {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="page.js"></script>
         <script>
       if (localStorage.getItem('username')){
         var username = localStorage.getItem('username');
