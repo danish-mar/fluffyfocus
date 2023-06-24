@@ -540,7 +540,6 @@ setTimeout(hideLoader, 5000);
   
       const imagePath = 'images/'; // Replace with your actual image folder path
       const paginationLimit = 40; // Number of images per page
-  
       fetch(`${imagePath}filelist.json`)
         .then(response => response.json())
         .then(data => {
