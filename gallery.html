@@ -553,7 +553,7 @@ setTimeout(hideLoader, 5000);
             const endIndex = currentPage * paginationLimit;
   
             for (let i = startIndex; i < endIndex && i < data.length; i++) {
-              const fileName = data[i].replace('.jpeg', '');
+              const fileName = data[i].replace('.jpeg', '').replace('.jpg',' ');
               const imgSrc = `${imagePath}${data[i]}`;
   
               const galleryItem = document.createElement('li');
