@@ -6,70 +6,96 @@
   <title>404 Not Found</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
-body {
-  background-image: url("bgs/_90d4df38-7432-44b1-8e27-91feb77f0f0d.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
+    body {
+      background-image: url(bgs/404_1.png);
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
 
+    .container {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: right; /* Center align for all screen sizes */
+      text-align: center; /* Center text for all screen sizes */
+    }
 
-.container {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .error-container {
+      text-align: center;
+    }
 
-.error-container {
-  text-align: center;
-}
+    .error-container h1 {
+      font-size: 8rem;
+      margin-bottom: 10px;
+      color: #53015d;
+      animation: bounce 1s ease infinite;
+    }
 
-.error-container h1 {
-  font-size: 8rem;
-  margin-bottom: 10px;
-  color: #590064;
-  animation: bounce 1s ease infinite;
-}
+    .error-container h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: brown;
+    }
 
-.error-container h3 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
+    .error-container p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: brown;
+    }
 
-.error-container p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
+    .btn-pink {
+      background-color: #590064;
+      color: #fff;
+      border: none;
+      padding: 10px 30px;
+      font-size: 1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
 
-.btn-pink {
-  background-color: #590064;
-  color: #fff;
-  border: none;
-  padding: 10px 30px;
-  font-size: 1rem;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
+    .btn-pink:hover {
+      background-color: #ff1493;
+    }
 
-.btn-pink:hover {
-  background-color: #ff1493;
-}
+    @keyframes bounce {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
 
-@keyframes bounce {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+    /* Media query for screens with a max-width of 600px (e.g., mobile screens) */
+    @media (max-width: 600px) {
+      body {
+        /* Change background image for mobile */
+        background-image: url("bgs/404.jpg");
+      }
 
+      /* Change text colors for mobile */
+      .error-container h1 {
+        color: #ff1493;
+      }
+
+      .error-container h3{
+        color: ;
+      }
+      .error-container p {
+        color: #000000;
+      }
+
+      /* Center-align text for mobile */
+      .container {
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
