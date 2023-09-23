@@ -1,12 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Fluffyfocus</title>
+    <title>About Us - Fluffy Focus Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        body {
+            background-color: #000000;
+            color: #ff69b4;
+            font-family: "Arial", sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo img {
+            height: 200px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .terminal {
+            position: relative;
+            background-color: #000000;
+            padding: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            font-family: monospace;
+            color: #ff69b4;
+            font-size: 18px;
+            line-height: 1.5;
+            border: 2px solid #ff69b4;
+            cursor: none;
+        }
+
+        .cursor {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 10px;
+            height: 20px;
+            background-color: #ff69b4;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .line {
+            display: inline-block;
+            position: relative;
+        }
+
+        .typed-text {
+            display: inline-block;
+            animation: typing 2s steps(22), blink-caret 0.7s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+            from,
+            to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #ff69b4;
+            }
+        }
+
+        .footer {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Fluffy Focus Logo">
+        </div>
+        <h1>About Us</h1>
+        <div class="terminal">
+            <div class="output">
+                <div class="line">Welcome to Fluffy Focus Portfolio.</div>
+                <div class="line">We specialize in capturing the essence of beauty, creativity, and emotion through our photography.</div>
+                <div class="line">With our team of skilled photographers and state-of-the-art equipment, we ensure that each photograph tells a unique story.</div>
+                <div class="line">Whether it's a portrait, landscape, or special event, we strive to create images that evoke emotions and spark imagination.</div>
+                <div class="line">At Fluffy Focus Portfolio, we believe that every moment is worth capturing.</div>
+                <div class="line">We are dedicated to preserving memories and showcasing the beauty of the world through our lenses.</div>
+                <div class="line">Join us on this artistic journey and let us help you bring your vision to life.</div>
+            </div>
+            <div class="cursor"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 Fluffy Focus. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Typing animation
+        const lines = document.querySelectorAll('.line');
+
+        function typeLines() {
+            lines.forEach((line, index) => {
+                const text = line.textContent.trim();
+                line.textContent = '';
+
+                const typedText = document.createElement('span');
+                typedText.classList.add('typed-text');
+                typedText.textContent = text;
+
+                line.appendChild(typedText);
+            });
+        }
+
+        typeLines();
+    </script>
 </body>
+
 </html>
